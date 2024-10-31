@@ -11,17 +11,10 @@ class Hashmap {
     }
     return hashCode;
   }
-  loadFactor() {
-    while (this.length() / this.size > 0.75) {
-      this.size++;
-    }
-    return this.size;
-  }
 
   set(key, value) {
     const index = this.hash(key);
     const bucket = this.table[index];
-    this.loadFactor();
     if (!bucket) {
       this.table[index] = [[key, value]];
     } else {
